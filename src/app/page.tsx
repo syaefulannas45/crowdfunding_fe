@@ -13,65 +13,8 @@ const Home = () => {
   return (
     <main className="antiliased ">
       <section className="landing-hero pt-5 px-10">
-        <div className="header__bg"></div>
+        <div className="header__bg bg-auth-background"></div>
         <div className="container mx-auto relative">
-          <header className="flex items-center">
-            <div style={{ height: 54 }} className="pr-5 h-full">
-              <ICLogo />
-            </div>
-            <ul className="flex items-center">
-              <li>
-                <a
-                  className="text-white hover:text-teal-500 text-lg px-4 py-3"
-                  href="/"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-white hover:text-teal-500 text-lg px-4 py-3"
-                  href="/projects.html"
-                >
-                  Project
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-white hover:text-teal-500 text-lg px-4 py-3"
-                  href="/features.html"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-white hover:text-teal-500 text-lg px-4 py-3"
-                  href="/story.html"
-                >
-                  Success Stories
-                </a>
-              </li>
-            </ul>
-            <ul className="flex ml-auto items-center mt-2">
-              <li>
-                <a
-                  href="/register.html"
-                  className="inline-block bg-transparent border-white border hover:bg-white hover:bg-opacity-25 text-white font-light w-40 text-center px-6 py-1 text-lg rounded-full mr-4"
-                >
-                  Sign Up
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/login.html"
-                  className="inline-block bg-transparent border-white border hover:bg-white hover:bg-opacity-25 text-white font-light w-40 text-center px-6 py-1 text-lg rounded-full"
-                >
-                  My Account
-                </a>
-              </li>
-            </ul>
-          </header>
           <div className="flex items-center pt-10 px-5 md:px-0">
             <div className="w-1/2">
               <h1 className="text-4xl text-white mb-5">

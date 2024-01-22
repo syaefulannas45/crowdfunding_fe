@@ -1,3 +1,4 @@
+import { url } from "inspector";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -21,6 +22,9 @@ const config: Config = {
       borderRadius: {
         20: "20px",
       },
+    },
+    backgroundImage: {
+      "background": "url('/assets/ilustration/onepiece.jpg')",
     },
   },
   plugins: [],
