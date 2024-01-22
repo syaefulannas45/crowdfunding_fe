@@ -60,7 +60,7 @@ const Steps = () => {
       </div>
       <div className="flex justify-between items-center text-center">
         {steps.map((step) => (
-          <div key={step.id}>
+          <div className="w-1/3" key={step.id}>
             <StepDetails
               image={step.image}
               title={step.title}
