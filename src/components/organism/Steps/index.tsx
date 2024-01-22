@@ -42,7 +42,7 @@ const Steps = () => {
     },
   ];
   return (
-    <section className="container mx-auto pt-24">
+    <section className="container mx-auto pt-24 px-10">
       <div className="flex justify-between items-center mb-10">
         <div className="w-auto">
           <h2 className="text-3xl text-gray-900 mb-8">

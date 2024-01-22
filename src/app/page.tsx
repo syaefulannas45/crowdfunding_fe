@@ -1,11 +1,18 @@
-import { ICLogo, ILHero2x } from "@/assets";
-import { Project, Steps } from "@/components";
+import {
+  ICLogo,
+  ICTestiLine,
+  ICTestimonial1,
+  ICTestimonial2,
+  ICTestimonial3,
+  ILHero2x,
+} from "@/assets";
+import { GetStarted, Project, Steps, Testimonial } from "@/components";
 import Image from "next/image";
 
 const Home = () => {
   return (
-    <main className="antiliased px-10">
-      <section className="landing-hero pt-5">
+    <main className="antiliased ">
+      <section className="landing-hero pt-5 px-10">
         <div className="header__bg"></div>
         <div className="container mx-auto relative">
           <header className="flex items-center">
@@ -89,6 +96,9 @@ const Home = () => {
       </section>
       <Steps />
       <Project />
+      <Testimonial />
+      <div className="cta-clip -mt-20"></div>
+      <GetStarted />
     </main>
   );
 };
