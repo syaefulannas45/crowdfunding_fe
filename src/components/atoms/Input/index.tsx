@@ -6,8 +6,16 @@ interface InputProps {
   placeholder?: string;
   onChange?: ChangeEventHandler;
   label?: string;
+  className?: string;
 }
-const Input = ({ type, value, placeholder, label, onChange }: InputProps) => {
+const Input = ({
+  type,
+  value,
+  placeholder,
+  label,
+  onChange,
+  className,
+}: InputProps) => {
   return (
     <>
       <label className="font-normal text-lg text-white block mb-3">
@@ -15,7 +23,7 @@ const Input = ({ type, value, placeholder, label, onChange }: InputProps) => {
       </label>
       <input
         type={type}
-        className="auth-form focus:outline-none focus:bg-purple-hover focus:shadow-outline focus:border-purple-hover-stroke focus:text-gray-100"
+        className={`${className} auth-form focus:outline-none focus:bg-purple-hover focus:shadow-outline focus:border-purple-hover-stroke focus:text-gray-100`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

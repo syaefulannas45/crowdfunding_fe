@@ -4,6 +4,7 @@ import ICTestimonial1 from "./testimonial-1-icon.png";
 import ICTestimonial2 from "./testimonial-2-icon.png";
 import ICTestimonial3 from "./testimonial-3-icon.png";
 import ICAvatarAdd from "./icon-avatar-add.svg";
+import ICChecklist from "./icon-checklist.svg"
 
 export {
   ICLogo,
@@ -12,4 +13,5 @@ export {
   ICTestimonial2,
   ICTestimonial3,
   ICAvatarAdd,
+  ICChecklist
 };

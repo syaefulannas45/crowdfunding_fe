@@ -148,3 +148,11 @@ footer {
   background-position: top right;
   background-repeat: no-repeat;
 }
+.project-header {
+  background-image: url("/auth-background.svg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-color: #3b41e3;
+  background-size: 250px;
+  height: 350px;
+}

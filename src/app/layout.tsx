@@ -21,6 +21,7 @@ export default function RootLayout({
     "/register",
     "/register/upload",
     "/register/success",
+    "/project",
   ];
 
   const hideNavAndFooter = pagesWithoutNavAndFooter.includes(pathname);

@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import SignForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
+import ProjectSlider from "./ProjectSlider";
 
 export {
   Steps,
@@ -16,4 +17,5 @@ export {
   Navbar,
   SignForm,
   RegisterForm,
+  ProjectSlider
 };
