@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
 
-  const pagesWithoutNavAndFooter = ["/login", "/register", "/register/upload"];
+  const pagesWithoutNavAndFooter = [
+    "/login",
+    "/register",
+    "/register/upload",
+    "/register/success",
+  ];
 
   const hideNavAndFooter = pagesWithoutNavAndFooter.includes(pathname);
   return (
