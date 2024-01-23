@@ -1,11 +1,4 @@
-import {
-  ICLogo,
-  ICTestiLine,
-  ICTestimonial1,
-  ICTestimonial2,
-  ICTestimonial3,
-  ILHero2x,
-} from "@/assets";
+import { ILHero2x } from "@/assets";
 import { GetStarted, Project, Steps, Testimonial } from "@/components";
 import Image from "next/image";
 
