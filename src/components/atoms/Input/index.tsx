@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler } from "react";
 
-interface InputProps {
+export interface InputProps {
   type?: string;
   value?: string;
   placeholder?: string;

@@ -1,3 +1,3 @@
 import Input from "./Input";
-
-export { Input };
+import InputProject from "./Input/InputProject";
+export { Input, InputProject };

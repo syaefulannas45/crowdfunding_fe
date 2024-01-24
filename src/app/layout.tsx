@@ -25,7 +25,7 @@ export default function RootLayout({
     "/project/fund-success",
     "/dashboard",
     "/dashboard/create",
-    "/dashboard/transaction",
+    "/dashboard/transactions",
     "/dashboard/detail",
   ];
 
