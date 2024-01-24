@@ -7,6 +7,8 @@ export interface InputProps {
   onChange?: ChangeEventHandler;
   label?: string;
   className?: string;
+  name?: string;
+  defaultValue?: string;
 }
 const Input = ({
   type,
@@ -15,6 +17,8 @@ const Input = ({
   label,
   onChange,
   className,
+  name,
+  defaultValue,
 }: InputProps) => {
   return (
     <>
@@ -27,6 +31,8 @@ const Input = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        name={name}
+        defaultValue={defaultValue}
       />
     </>
   );

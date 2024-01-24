@@ -1,5 +1,7 @@
+"use client";
 import { ILHero2x } from "@/assets";
 import { GetStarted, Project, Steps, Testimonial } from "@/components";
+
 import Image from "next/image";
 
 const Home = () => {
