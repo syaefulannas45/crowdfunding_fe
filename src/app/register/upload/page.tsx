@@ -4,59 +4,106 @@ import axios from "axios";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
-const UploadProfilePage = async () => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+interface Avatar {
+  avatar: File | null;
+}
+const UploadProfilePage = () => {
+  const [avatarUser, setAvatarUser] = useState<Avatar>({
+    avatar: null,
+  });
+  const [nameUser, setNameUser] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const data = await getData();
-  console.log(data);
+  const router = useRouter();
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedImage(file);
+      setAvatarUser({ ...avatarUser, avatar: file });
     }
   };
+
+  useEffect(() => {
+    const getUserByIDCookie = async () => {
+      try {
+        const token = Cookies.get("token");
+        const apiUrl = process.env.API_URL;
+        const fetchUser = await axios.post(`${apiUrl}/users/fetch`, null, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const user = fetchUser.data.data.name;
+
+        setNameUser(user);
+      } catch (error) {
+        if (error) {
+          router.back();
+        }
+      }
+    };
+
+    getUserByIDCookie();
+  }, []);
 
   const handleImageClick = () => {
     inputRef.current?.click();
   };
 
-  const handleSignUp = async () => {};
+  const handleSignUp = async () => {
+    try {
+      const apiUrl = process.env.API_URL;
+      const token = Cookies.get("token");
+      const uploadAvatar = await axios.post(`${apiUrl}/avatars`, avatarUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (uploadAvatar) {
+        alert("success");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="antiliased">
       <div className="auth-page">
         <div className="container mx-auto h-screen flex justify-center items-center">
           <div className="w-full lg:w-1/3 px-10 lg:px-0">
-            <div className="flex justify-center items-center mx-auto mb-4 w-40">
-              <div className="relative" onClick={handleImageClick}>
-                <Image
-                  src={
-                    selectedImage
-                      ? URL.createObjectURL(selectedImage)
-                      : ILAvatar
-                  }
-                  alt=""
-                  className="rounded-full border-white border-4 w-[150px] h-[150px] object-cover"
-                  priority
-                  width={500}
-                  height={500}
-                />
-                <div className="absolute right-0 bottom-0 pb-2">
-                  <ICAvatarAdd />
+            <form encType="multipart/form-data">
+              <div className="flex justify-center items-center mx-auto mb-4 w-40">
+                <div className="relative" onClick={handleImageClick}>
+                  <Image
+                    src={
+                      avatarUser.avatar
+                        ? URL.createObjectURL(avatarUser.avatar)
+                        : ILAvatar
+                    }
+                    alt=""
+                    className="rounded-full border-white border-4 w-[150px] h-[150px] object-cover"
+                    priority
+                    width={500}
+                    height={500}
+                  />
+                  <div className="absolute right-0 bottom-0 pb-2">
+                    <ICAvatarAdd />
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={handleImageChange}
+                    ref={inputRef}
+                  />
                 </div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  onChange={handleImageChange}
-                  ref={inputRef}
-                />
               </div>
-            </div>
+            </form>
             <h2 className="font-normal mb-3 text-3xl text-white text-center">
-              {/* Hi, {register.name} */}
+              Hi, {nameUser}
             </h2>
             <p className="text-white text-center font-light">
               Please upload your selfie
@@ -84,26 +131,5 @@ const UploadProfilePage = async () => {
     </section>
   );
 };
-
-async function getData() {
-  try {
-    const token = Cookies.get("token");
-    const apiUrl = process.env.API_URL;
-    const fetchUser = await axios.post(`${apiUrl}/users/fetch`, null, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const userData = fetchUser.data.data;
-    return userData;
-  } catch (error) {
-    return {
-      redirect: {
-        destination: "/register",
-        permanent: false,
-      },
-    };
-  }
-}
 
 export default UploadProfilePage;
