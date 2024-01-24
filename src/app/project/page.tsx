@@ -5,7 +5,6 @@ import {
   Navbar,
   ProjectSlider,
 } from "@/components";
-import Image from "next/image";
 import React from "react";
 
 const ProjectDetailPage = () => {

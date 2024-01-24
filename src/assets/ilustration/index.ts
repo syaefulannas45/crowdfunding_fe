@@ -6,6 +6,7 @@ import ILStep3 from "./step-3-illustration.svg";
 import ILOP from "./onepiece.jpg";
 import ILAvatar from "./avatar.jpg";
 import ILSuccess from "./success-illustration.svg";
+import ILFund from "./funded-illustration.svg";
 
 export {
   ILHero2x,
@@ -16,4 +17,5 @@ export {
   ILOP,
   ILAvatar,
   ILSuccess,
+  ILFund,
 };

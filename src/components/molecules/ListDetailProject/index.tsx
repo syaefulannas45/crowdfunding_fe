@@ -2,7 +2,7 @@ import { ICChecklist } from "@/assets";
 import React from "react";
 
 interface ListDetailProps {
-  list?: string;
+  list?: string | string[];
 }
 const ListDetailProject = ({ list }: ListDetailProps) => {
   return (

@@ -7,6 +7,8 @@ import Navbar from "./Navbar";
 import SignForm from "./SignInForm";
 import RegisterForm from "./RegisterForm";
 import ProjectSlider from "./ProjectSlider";
+import ProjectDashboard from "./ProjectDashboard";
+import DetailProjectDashboard from "./DetailProjectDashboard";
 
 export {
   Steps,
@@ -17,5 +19,7 @@ export {
   Navbar,
   SignForm,
   RegisterForm,
-  ProjectSlider
+  ProjectSlider,
+  ProjectDashboard,
+  DetailProjectDashboard,
 };
