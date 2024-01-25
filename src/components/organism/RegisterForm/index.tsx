@@ -21,7 +21,7 @@ const RegisterForm = () => {
     password: "",
   });
 
-  const router = useRouter();
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });

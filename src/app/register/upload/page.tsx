@@ -4,7 +4,7 @@ import axios from "axios";
 import { ICAvatarAdd, ILAvatar } from "@/assets";
 import { ChangeEvent, useRef, useState } from "react";
 import Image from "next/image";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 interface Avatar {
   avatar: File | null;

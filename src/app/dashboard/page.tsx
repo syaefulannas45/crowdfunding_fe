@@ -1,6 +1,7 @@
 import { DUProjectImg } from "@/assets";
 import { GetStarted, Navbar, ProjectDashboard } from "@/components";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const DashboardPage = () => {
@@ -18,18 +19,18 @@ const DashboardPage = () => {
               </h2>
               <ul className="flex mt-2">
                 <li className="mr-6">
-                  <a className="text-gray-800 font-bold" href="#">
+                  <Link className="text-gray-800 font-bold" href="/dashboard">
                     {" "}
                     Your Projects{" "}
-                  </a>
+                  </Link>
                 </li>
                 <li className="mr-6">
-                  <a
+                  <Link
                     className="text-gray-500 hover:text-gray-800"
-                    href="/dashboard/transactions.html"
+                    href="/dashboard/transactions"
                   >
                     Your Transactions
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
