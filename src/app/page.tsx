@@ -1,16 +1,10 @@
 import { ILHero2x } from "@/assets";
 import { GetStarted, Project, Steps, Testimonial } from "@/components";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { Cookie } from "next/font/google";
-import { cookies } from "next/headers";
 import Image from "next/image";
 
 const Home = async () => {
-  
   return (
     <>
-      <title>Crowdfunding</title>
       <main className="antiliased ">
         <section className="landing-hero pt-5 px-10">
           <div className="header__bg bg-auth-background"></div>
@@ -48,6 +42,5 @@ const Home = async () => {
     </>
   );
 };
-
 
 export default Home;
