@@ -9,7 +9,7 @@ import RegisterForm from "./RegisterForm";
 import ProjectSlider from "./ProjectSlider";
 import ProjectDashboard from "./ProjectDashboard";
 import DetailProjectDashboard from "./DetailProjectDashboard";
-import UploadAvatar from "./UploadAvatar";
+// import UploadAvatar from "./UploadAvatar";
 
 export {
   Steps,
@@ -23,5 +23,5 @@ export {
   ProjectSlider,
   ProjectDashboard,
   DetailProjectDashboard,
-  UploadAvatar,
+  // UploadAvatar,
 };

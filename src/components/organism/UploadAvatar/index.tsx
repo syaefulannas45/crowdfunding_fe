@@ -1,31 +1,57 @@
-"use client";
+"use client"
 import { ICAvatarAdd, ILAvatar } from "@/assets";
+import axios from "axios";
+import { cookies } from "next/headers";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { ChangeEvent, useRef, useState } from "react";
 
+interface Avatar {
+  avatar: File | null;
+}
 const UploadAvatar = ({ name }: { name: string }) => {
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  let avatarUser: Avatar = { avatar: null };
+  let inputRef: any = { current: null };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  function handleImageChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedImage(file);
+      avatarUser.avatar = file;
     }
-  };
+  }
 
-  const handleImageClick = () => {
-    inputRef.current?.click();
-  };
+  function handleImageClick() {
+    inputRef.current.click();
+  }
 
-  const handleSignUp = async () => {};
-
+  async function handleSignUp() {
+    try {
+      const apiUrl = process.env.API_URL;
+      const cookie = cookies();
+      const token = cookie.get("token")?.value;
+      const uploadAvatar = await axios.post(`${apiUrl}/avatars`, avatarUser, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (uploadAvatar) {
+        alert("success");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="w-full lg:w-1/3 px-10 lg:px-0">
       <div className="flex justify-center items-center mx-auto mb-4 w-40">
-        <div className="relative" onClick={handleImageClick}>
+        <button className="relative" onClick={handleImageClick}>
           <Image
-            src={selectedImage ? URL.createObjectURL(selectedImage) : ILAvatar}
+            src={
+              avatarUser.avatar
+                ? URL.createObjectURL(avatarUser.avatar)
+                : ILAvatar
+            }
             alt=""
             className="rounded-full border-white border-4 w-[150px] h-[150px] object-cover"
             priority
@@ -42,7 +68,7 @@ const UploadAvatar = ({ name }: { name: string }) => {
             onChange={handleImageChange}
             ref={inputRef}
           />
-        </div>
+        </button>
       </div>
       <h2 className="font-normal mb-3 text-3xl text-white text-center">
         Hi, {name}

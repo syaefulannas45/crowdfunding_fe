@@ -7,7 +7,9 @@ import {
 } from "@/components";
 import React from "react";
 
+
 const ProjectDetailPage = () => {
+  
   return (
     <div className="antialiased">
       <div className="project-page">
@@ -78,5 +80,6 @@ const ProjectDetailPage = () => {
     </div>
   );
 };
+
 
 export default ProjectDetailPage;

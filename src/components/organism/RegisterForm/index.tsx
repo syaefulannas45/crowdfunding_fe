@@ -32,9 +32,8 @@ const RegisterForm = () => {
       const apiUrl = process.env.API_URL;
       const register = await axios.post(`${apiUrl}/users`, form);
       const token = register.data.data.token;
-      console.log(token);
       Cookies.set("token", token, { sameSite: "None", secure: true });
-      // router.push("/register/upload");
+      router.push("/register/upload");
     } catch (error) {
       console.log(error);
     }

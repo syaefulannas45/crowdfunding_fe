@@ -1,10 +1,13 @@
-"use client";
 import { ILHero2x } from "@/assets";
 import { GetStarted, Project, Steps, Testimonial } from "@/components";
-
+import axios from "axios";
+import Cookies from "js-cookie";
+import { Cookie } from "next/font/google";
+import { cookies } from "next/headers";
 import Image from "next/image";
 
-const Home = () => {
+const Home = async () => {
+  
   return (
     <>
       <title>Crowdfunding</title>
@@ -45,4 +48,6 @@ const Home = () => {
     </>
   );
 };
+
+
 export default Home;
