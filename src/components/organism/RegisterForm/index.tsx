@@ -3,7 +3,7 @@ import { Input } from "@/components";
 import axios from "axios";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 import Cookies from "js-cookie";
 
@@ -33,7 +33,7 @@ const RegisterForm = () => {
       const register = await axios.post(`${apiUrl}/users`, form);
       const token = register.data.data.token;
       Cookies.set("token", token, { sameSite: "None", secure: true });
-      router.push("/register/upload");
+      redirect("/register/success");
     } catch (error) {
       console.log(error);
     }

@@ -1,8 +1,10 @@
 import { ICLogo } from "@/assets";
 import Link from "next/link";
 import React from "react";
+import Cookies from "js-cookie";
 
 const Navbar = () => {
+  const token = Cookies.get("token");
   return (
     <header className="flex items-center relative z-10 px-12 pt-10">
       <div style={{ height: 54 }} className="pr-5 h-full">
@@ -43,14 +45,16 @@ const Navbar = () => {
         </li>
       </ul>
       <ul className="flex ml-auto items-center mt-2">
-        <li>
-          <Link
-            href="/register"
-            className="inline-block bg-transparent border-white border hover:bg-white hover:bg-opacity-25 text-white font-light w-40 text-center px-6 py-1 text-lg rounded-full mr-4"
-          >
-            Sign Up
-          </Link>
-        </li>
+        {token !== undefined && (
+          <li>
+            <Link
+              href="/register"
+              className="inline-block bg-transparent border-white border hover:bg-white hover:bg-opacity-25 text-white font-light w-40 text-center px-6 py-1 text-lg rounded-full mr-4"
+            >
+              Sign Up
+            </Link>
+          </li>
+        )}
         <li>
           <Link
             href="/"

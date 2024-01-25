@@ -1,7 +1,26 @@
+"use client";
 import { ILSuccess } from "@/assets";
-import React from "react";
+import { redirect, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const SuccesRegisterPage = () => {
+  const router = useRouter();
+  useEffect(() => {
+    const handleBack = () => {
+      router.replace("/");
+    };
+
+    window.addEventListener("popstate", handleBack);
+
+    return () => {
+      window.removeEventListener("popstate", handleBack);
+    };
+  }, [router]);
+
+  const handleExplore = () => {
+    router.push("/dashboard");
+  };
+
   return (
     <section className="antiliased">
       <div className="success-page">
@@ -20,7 +39,10 @@ const SuccesRegisterPage = () => {
             </p>
             <div className="mb-4 mt-6">
               <div className="mb-3">
-                <button className="block w-full bg-orange-button hover:bg-green-button text-white font-semibold px-6 py-4 text-lg rounded-full">
+                <button
+                  onClick={handleExplore}
+                  className="block w-full bg-orange-button hover:bg-green-button text-white font-semibold px-6 py-4 text-lg rounded-full"
+                >
                   Start Explore
                 </button>
               </div>

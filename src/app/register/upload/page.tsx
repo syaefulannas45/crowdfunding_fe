@@ -4,7 +4,7 @@ import axios from "axios";
 import { ICAvatarAdd, ILAvatar } from "@/assets";
 import { ChangeEvent, useRef, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 interface Avatar {
   avatar: File | null;
@@ -65,7 +65,7 @@ const UploadProfilePage = () => {
       });
       const isUploaded = uploadAvatar.data.data.is_uploaded;
       if (isUploaded) {
-        router.push("/register/success");
+        redirect("/register/success");
       } else {
         alert("Gagal mengupload foto");
       }
@@ -79,7 +79,10 @@ const UploadProfilePage = () => {
       <section className="antiliased">
         <div className="auth-page">
           <div className="container mx-auto h-screen flex justify-center items-center">
-            <div className="w-full lg:w-1/3 px-10 lg:px-0">
+            <form
+              action={"/register/success"}
+              className="w-full lg:w-1/3 px-10 lg:px-0"
+            >
               <div className="flex justify-center items-center mx-auto mb-4 w-40">
                 <div className="relative" onClick={handleImageClick}>
                   <Image
@@ -129,7 +132,7 @@ const UploadProfilePage = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </section>
