@@ -97,7 +97,6 @@ const SignForm = () => {
           <Link href="/register" className="no-underline text-orange-button">
             Sign Up
           </Link>
-          .
         </p>
       </div>
     </form>
