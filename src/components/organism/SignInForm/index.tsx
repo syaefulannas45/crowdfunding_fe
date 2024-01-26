@@ -15,11 +15,13 @@ const SignForm = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
   };
 
   const handleSignIn = async (e: FormEvent) => {
@@ -42,7 +44,7 @@ const SignForm = () => {
         setIsLoading(false);
       }, 2000);
     } catch (error) {
-      console.log(error);
+      setError("Email or password invalid");
       setIsLoading(false);
     }
   };
@@ -52,6 +54,13 @@ const SignForm = () => {
       <h2 className="font-normal mb-6 text-3xl text-white">
         Sign In to Your Account
       </h2>
+      <p
+        className={`text-white bg-red-500 px-2 py-2 w-[50%] text-center rounded-lg ${
+          error === "" ? "invisible" : "visible"
+        } my-4`}
+      >
+        {error}
+      </p>
       <div className="mb-6">
         <div className="mb-4">
           <Input
