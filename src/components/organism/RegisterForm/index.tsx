@@ -1,7 +1,6 @@
 "use client";
 import { Input } from "@/components";
 import axios from "axios";
-import { cookies } from "next/headers";
 import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
@@ -20,21 +19,37 @@ const RegisterForm = () => {
     email: "",
     password: "",
   });
-
-
+  const forEmail = {
+    email: form.email,
+  };
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
   };
 
   const handleSignUp = async () => {
+    setIsLoading(true);
     try {
       const apiUrl = process.env.API_URL;
-      const register = await axios.post(`${apiUrl}/users`, form);
-      const token = register.data.data.token;
-      Cookies.set("token", token, { sameSite: "None", secure: true });
-      redirect("/register/success");
+      const checkEmail = await axios.post(`${apiUrl}/email_checkers`, forEmail);
+      const isAvailable = checkEmail.data.data.is_available;
+      setTimeout(async () => {
+        if (isAvailable) {
+          const register = await axios.post(`${apiUrl}/users`, form);
+          const token = register.data.data.token;
+          Cookies.set("token", token, { sameSite: "None", secure: true });
+          router.replace("/register/upload");
+        } else {
+          setError("Email telah terdaftar");
+          setIsLoading(false);
+        }
+      }, 2000);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -76,6 +91,11 @@ const RegisterForm = () => {
             name="email"
             onChange={handleChange}
           />
+          {error != "" && (
+            <p className="text-white bg-red-500 px-2 py-2 w-[40%] text-center rounded-lg mt-2">
+              {error}
+            </p>
+          )}
         </div>
       </div>
       <div className="mb-6">
@@ -94,9 +114,13 @@ const RegisterForm = () => {
         <div className="mb-4">
           <button
             onClick={handleSignUp}
-            className="block w-full bg-orange-button hover:bg-green-button text-white font-semibold px-6 py-4 text-lg rounded-full"
+            className="flex w-full bg-orange-button hover:bg-green-button text-white font-semibold px-6 py-4 text-lg rounded-full  justify-center items-center"
           >
-            Continue Sign Up
+            {isLoading ? (
+              <div className="border-t-2 border-r-2 animate-spin border-white rounded-full w-[20px] h-[20px]" />
+            ) : (
+              <p>Continue to Sign Up</p>
+            )}
           </button>
         </div>
       </div>

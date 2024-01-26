@@ -12,13 +12,14 @@ export const guestRoute: MiddlewareFactory = (next) => {
       return request.nextUrl.pathname.startsWith(url);
     };
     const included = (url: string) => {
-      return request.nextUrl.pathname.includes(url);
+      return request.nextUrl.pathname === url;
     };
 
     if (
-      (token === undefined && startWith("/dashboard")) ||
-      included("/register/upload") ||
-      included("/register/success")
+      token === undefined &&
+      (startWith("/dashboard") ||
+        included("/register/upload") ||
+        included("/register/success"))
     ) {
       return NextResponse.redirect(new URL("/login", request.url));
     }

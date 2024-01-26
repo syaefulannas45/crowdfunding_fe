@@ -12,10 +12,10 @@ export const userRoute: MiddlewareFactory = (next) => {
       return request.nextUrl.pathname.startsWith(url);
     };
     const included = (url: string) => {
-      return request.nextUrl.pathname.includes(url);
+      return request.nextUrl.pathname === url;
     };
 
-    if (token !== undefined && included("/login")) {
+    if (token !== undefined && (included("/login") || included("/register"))) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
     return next(request, _next);
