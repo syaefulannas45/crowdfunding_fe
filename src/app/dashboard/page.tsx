@@ -1,10 +1,12 @@
 import { DUProjectImg } from "@/assets";
 import { GetStarted, Navbar, ProjectDashboard } from "@/components";
-import Image from "next/image";
+import { getCampaignByUser } from "@/services";
 import Link from "next/link";
 import React from "react";
 
-const DashboardPage = () => {
+const DashboardPage = async () => {
+  const data = await getCampaignByUser();
+  const campaigns = data.data;
   return (
     <section className="antialiased">
       <div className="project-page">
@@ -43,16 +45,19 @@ const DashboardPage = () => {
               </a>
             </div>
           </div>
-          <hr />
-          <ProjectDashboard
-            image={DUProjectImg}
-            title="Cari Uang Buat Gunpla"
-            amount={"200.000.000"}
-            progress={80}
-            shortDescription="With N-key rollover (NKRO on wired mode only) you can register as
-              many keys as you can press at once without missing out characters.
-              It allows to use all the same media keys as conventional macOS."
-          />
+
+          {campaigns.length !== 0 &&
+            campaigns.map((campaign: any, index: number) => (
+              <div key={index}>
+                <ProjectDashboard
+                  image={DUProjectImg}
+                  title={campaign.name}
+                  amount={campaign.goal_amount}
+                  progress={80}
+                  shortDescription={campaign.short_description}
+                />
+              </div>
+            ))}
         </section>
         <div className="cta-clip -mt-20"></div>
         <GetStarted />

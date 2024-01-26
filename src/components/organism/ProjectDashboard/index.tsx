@@ -19,16 +19,16 @@ const ProjectDashboard = ({
   amount,
 }: ProjectDashboardProps) => {
   return (
-    <div className="block mb-2">
-      <div className="w-full lg:max-w-full lg:flex mb-4">
-        <div>
+    <div className="mb-2">
+      <div className="w-full lg:max-w-full lg:flex mb-4 h-[250px] border-t-2 border-2 space-x-4 py-2">
+        <div className="w-[30%] flex justify-start">
           <Image
-            className="h-full lg:h-full lg:w-full flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden object-contain"
+            className="h-full lg:h-full lg:w-full object-contain"
             src={image!}
             alt=""
           />
         </div>
-        <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-8 flex flex-col justify-between leading-normal">
+        <div className="w-[70%]">
           <div className="mb-8">
             <div className="text-gray-900 font-bold text-xl mb-1">{title}</div>
             <p className="text-sm text-gray-600 flex items-center mb-2">
