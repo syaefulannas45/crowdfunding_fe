@@ -1,6 +1,7 @@
+"use server";
 import { cookies } from "next/headers";
 
-export const getUser = async (data?: any) => {
+export const getUser = async (key: string) => {
   try {
     const cookie = cookies();
     const token = cookie.get("token")?.value;
@@ -12,8 +13,8 @@ export const getUser = async (data?: any) => {
       },
     });
     const user = await response.json();
-    if (data !== undefined) {
-      return user.data[data];
+    if (key !== undefined) {
+      return user.data[key];
     }
     return user.data;
   } catch (error) {

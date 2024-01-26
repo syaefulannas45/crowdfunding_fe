@@ -8,6 +8,7 @@ const InputProject = ({
   label,
   onChange,
   className,
+  name,
 }: InputProps) => {
   return (
     <>
@@ -19,6 +20,7 @@ const InputProject = ({
         className={`${className} appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500`}
         placeholder={placeholder}
         value={value}
+        name={name}
         onChange={onChange}
       />
     </>

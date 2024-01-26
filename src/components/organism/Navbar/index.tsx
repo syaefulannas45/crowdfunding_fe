@@ -20,7 +20,6 @@ const Navbar = () => {
     "/project",
     "/project/fund-success",
     "/dashboard",
-    "/dashboard/create",
     "/dashboard/transactions",
     "/dashboard/detail",
   ];

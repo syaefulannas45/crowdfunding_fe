@@ -2,7 +2,7 @@ import React, { ChangeEventHandler } from "react";
 
 export interface InputProps {
   type?: string;
-  value?: string;
+  value?: string | number;
   placeholder?: string;
   onChange?: ChangeEventHandler;
   label?: string;

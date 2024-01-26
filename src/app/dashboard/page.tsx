@@ -1,3 +1,4 @@
+"use server"
 import { DUProjectImg } from "@/assets";
 import { GetStarted, Navbar, ProjectDashboard } from "@/components";
 import { getCampaignByUser } from "@/services";
@@ -37,12 +38,12 @@ const DashboardPage = async () => {
               </ul>
             </div>
             <div className="w-1/4 text-right">
-              <a
-                href="/dashboard/create.html"
+              <Link
+                href="/dashboard/create"
                 className="bg-orange-button hover:bg-green-button text-white font-bold py-4 px-4 rounded inline-flex items-center"
               >
                 + Create Campaign
-              </a>
+              </Link>
             </div>
           </div>
 

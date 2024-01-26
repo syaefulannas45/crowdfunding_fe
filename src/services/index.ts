@@ -1,4 +1,4 @@
-import { getCampaignByUser } from "./campaignService";
+import { getCampaignByUser, createCampaign } from "./campaignService";
 import { getUser } from "./authService";
 
-export { getUser, getCampaignByUser };
+export { getUser, getCampaignByUser, createCampaign };
