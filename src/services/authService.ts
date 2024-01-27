@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 
-export const getUser = async (key: string) => {
+export const getUser = async (key?: string) => {
   try {
     const cookie = cookies();
     const token = cookie.get("token")?.value;

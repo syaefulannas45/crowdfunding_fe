@@ -6,9 +6,22 @@ import { CreateCampaignForm } from "@/app/dashboard/create/page";
 export const getCampaignByUser = async () => {
   try {
     const user = await getUser("id");
-    console.log(user);
     const apiUrl = process.env.API_URL;
     const getCampaigns = await fetch(`${apiUrl}/campaigns?user_id=${user}`, {
+      cache: "no-cache",
+    });
+    if (!getCampaigns.ok) {
+      throw new Error("Failed to fetch campaign");
+    }
+    return await getCampaigns.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getCampaignByID = async (id: number) => {
+  try {
+    const apiUrl = process.env.API_URL;
+    const getCampaigns = await fetch(`${apiUrl}/campaigns/${id}`, {
       cache: "no-cache",
     });
     if (!getCampaigns.ok) {

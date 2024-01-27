@@ -10,6 +10,7 @@ export interface ProjectDashboardProps {
   amount?: number | string;
   progress?: number | string;
   shortDescription?: string;
+  id?: number;
 }
 const ProjectDashboard = ({
   image,
@@ -17,6 +18,7 @@ const ProjectDashboard = ({
   progress,
   shortDescription,
   amount,
+  id,
 }: ProjectDashboardProps) => {
   return (
     <div className="mb-2">
@@ -38,7 +40,7 @@ const ProjectDashboard = ({
           </div>
           <div className="flex items-center">
             <Link
-              href="/dashboard/detail"
+              href={`/dashboard/detail/${id}`}
               className="bg-green-button text-white py-2 px-4 rounded"
             >
               Detail

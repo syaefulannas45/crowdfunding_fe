@@ -1,6 +1,6 @@
-"use server"
+"use server";
 import { DUProjectImg } from "@/assets";
-import { GetStarted, Navbar, ProjectDashboard } from "@/components";
+import { GetStarted, ProjectDashboard } from "@/components";
 import { getCampaignByUser } from "@/services";
 import Link from "next/link";
 import React from "react";
@@ -11,9 +11,7 @@ const DashboardPage = async () => {
   return (
     <section className="antialiased">
       <div className="project-page">
-        <section className="bg-blue-700 pb-10">
-          <Navbar />
-        </section>
+        <section className="bg-blue-700 pb-10 h-[150px] relative bottom-[100px]" />
         <section className="container mx-auto pt-8 px-10">
           <div className="flex justify-between items-center mb-6 w-full">
             <div className="w-3/4 mr-6">
@@ -56,6 +54,7 @@ const DashboardPage = async () => {
                   amount={campaign.goal_amount}
                   progress={80}
                   shortDescription={campaign.short_description}
+                  id={campaign.id}
                 />
               </div>
             ))}
